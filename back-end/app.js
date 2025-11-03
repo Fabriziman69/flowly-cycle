@@ -177,3 +177,4 @@ export { usuarioActual, datosUsuario }
 export function obtenerUsuarioActual() {
   return usuarioActual
 }
+

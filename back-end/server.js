@@ -71,7 +71,7 @@ app.get("/api/cycles/:userId", async (req, res) => {
   let query = supabase
     .from("Ciclo")
     .select("*")
-    .eq("user_id", userId)
+    .eq("fk_usuario", userId)
     .order("fecha_inicio", { ascending: false });
 
   if (!all) {
@@ -105,7 +105,7 @@ app.post("/api/records", async (req, res) => {
   const { data, error } = await supabase
     .from("Registro_diario") // 👈 nombre exacto de tu tabla en Supabase
     .insert([{
-      user_id: userId,
+      fk_usuario: userId,
       fecha,
       sintomas,
       sintoma_especifico: sintomaEspecifico,
@@ -132,7 +132,7 @@ app.get("/api/records/:userId", async (req, res) => {
   const { data, error } = await supabase
     .from("Registro_diario")
     .select("*")
-    .eq("user_id", userId)
+    .eq("fk_usuario", userId)
     .order("fecha", { ascending: true });
 
   if (error) {
@@ -150,4 +150,21 @@ app.listen(3000, () => {
   console.log("Servidor corriendo en http://localhost:3000");
 });
 
+// Obtener registros diarios de un usuario
+app.get("/api/records/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  const { data, error } = await supabase
+    .from("Registro_diario") // 👈 usa el nombre exacto de tu tabla
+    .select("*")
+    .eq("fk_usuario", userId)
+    .order("fecha", { ascending: false });
+
+  if (error) {
+    console.error("Error obteniendo registros:", error.message);
+    return res.status(400).json({ error: error.message });
+  }
+
+  res.json({ registros: data });
+});
 

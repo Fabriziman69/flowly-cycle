@@ -129,3 +129,4 @@ async function crearPerfilUsuario(userId, nombre, email) {
     return { data: null, error }
   }
 }
+

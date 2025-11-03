@@ -1,4 +1,5 @@
 // Importar funciones necesarias
+import { obtenerUsuarioActual } from './autenticacion.js'
 import { crearCiclo } from './cycles.js'
 import { obtenerFraseMotivacional } from './frases.js'
 
@@ -87,3 +88,4 @@ function mostrarExito(mensaje) {
   console.log('Éxito:', mensaje)
   alert('Éxito: ' + mensaje) // Reemplazar con tu sistema de notificaciones
 }
+
