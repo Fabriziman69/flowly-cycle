@@ -1,0 +1,30 @@
+{
+  "name": "calendario-menstrual-backend",
+  "version": "1.0.0",
+  "description": "Backend para la aplicación de seguimiento del ciclo menstrual",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test:auth": "node test_autenticacion.js",
+    "test:cycles": "node test_cycles.js",
+    "test:backend": "node test-back-end.js",
+    "test:all": "npm run test:auth && npm run test:cycles"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.78.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0"
+  },
+  "keywords": [
+    "menstrual",
+    "calendar",
+    "health",
+    "tracking",
+    "supabase"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT"
+}
